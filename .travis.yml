@@ -1,2 +1,3 @@
-script: ruby set-variables.rb
-
+script: 
+  - gem install travis
+  - ruby set-variables.rb
