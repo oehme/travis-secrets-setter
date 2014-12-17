@@ -7,4 +7,6 @@ repos.each do |repo|
 		puts "Setting env var '#{key}' on project '#{repo.slug}'"
 		repo.env_vars.upsert(key, "'#{ENV[key]}'", public: false)
 	end
+	repo.env_vars.upsert("GRADLE_OPTS", "'-Xmx1024m -XX:MaxPermSize=512m -Dorg.gradle.daemon=true'", public: true)
+	repo.env_vars.upsert("TERM", "'dumb'", public: true)
 end
