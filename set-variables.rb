@@ -2,7 +2,7 @@ require 'travis'
 Travis.access_token = Travis.github_auth(ENV['TRAVIS_TOKEN'])
 repos = Travis::Repository.find_all(owner_name: 'oehme').reject{|repo| 
 	repo.slug == 'oehme/travis-secrets-setter' 
-	|| !Travis.user.admin_access.include?(repo)
+	or not Travis.user.admin_access.include?(repo)
 }
 keys = ['ORG_GRADLE_PROJECT_bintrayApiKey', 'ORG_GRADLE_PROJECT_signingPassword', 'ORG_GRADLE_PROJECT_sonatypePassword']
 repos.each do |repo|
